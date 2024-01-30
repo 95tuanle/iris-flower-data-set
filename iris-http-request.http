@@ -17,6 +17,21 @@ Content-Type: application/json
 ### Get all iris data
 GET {{host}}/api/v1/iris
 
+### Get iris data by limit
+GET {{host}}/api/v1/iris?limit=2
+
+### Get iris data by skip
+GET {{host}}/api/v1/iris?skip=2
+
+### Get iris data by limit and skip
+GET {{host}}/api/v1/iris?limit=2&skip=2
+
+### Get iris data by sorting
+GET {{host}}/api/v1/iris?sort=sepalLength
+
+### Get iris data by sorting and order
+GET {{host}}/api/v1/iris?sort=sepalLength&order=desc
+
 ### Get iris data by id
 GET {{host}}/api/v1/iris/{{_id}}
 
