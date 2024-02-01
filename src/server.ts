@@ -10,7 +10,7 @@ const initializeMongoDatabaseConnection = async (mongoDBURL: string) => {
     connection.on('error', (error) => console.log(error))
     const port = process.env.PORT || 3000
     app.listen(port, () =>
-      console.log(`Server started at http://localhost:${port}`),
+      console.log(`Server started at http://localhost:${port}`)
     )
   } catch (error) {
     console.error(error)
@@ -27,7 +27,7 @@ if (
   initializeMongoDatabaseConnection(
     process.env.MONGODB_URI.replace(
       '<password>',
-      process.env.MONGODB_PASSWORD,
-    ).replace('<database>', process.env.MONGODB_DATABASE),
+      process.env.MONGODB_PASSWORD
+    ).replace('<database>', process.env.MONGODB_DATABASE)
   ).then(() => console.log('Connected to MongoDB'))
 }
