@@ -8,19 +8,14 @@ import irisRouter from './routers/iris-router'
 
 const specs = swaggerJsdoc({
   definition: {
-    openapi: '3.1.0',
-    info: {
-      title: 'Iris API',
-      version: '1.0.0',
-      description: 'An API for Iris data',
-    },
-    servers: [
-      {
-        url: 'http://localhost:3000',
-      },
-    ],
-  },
-  apis: ['./src/routers/*.ts'],
+    openapi: '3.1.0', info: {
+      title: 'Iris API', version: '1.0.0', description: 'An API for Iris data',
+    }, servers: [{
+      url: 'http://localhost:3000',
+    }, {
+      url: 'https://iris-flower-data-set.onrender.com',
+    }],
+  }, apis: ['./src/routers/*.ts'],
 })
 
 const app = express()
