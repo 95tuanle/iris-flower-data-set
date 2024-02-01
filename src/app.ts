@@ -8,12 +8,19 @@ import irisRouter from './routers/iris-router'
 
 const specs = swaggerJsdoc({
   definition: {
-    openapi: '3.1.0', info: {
-      title: 'Iris API', version: '1.0.0', description: 'An API for Iris data',
-    }, servers: [{
-      url: 'http://localhost:3000',
-    }],
-  }, apis: ['./src/routers/*.ts'],
+    openapi: '3.1.0',
+    info: {
+      title: 'Iris API',
+      version: '1.0.0',
+      description: 'An API for Iris data',
+    },
+    servers: [
+      {
+        url: 'http://localhost:3000',
+      },
+    ],
+  },
+  apis: ['./src/routers/*.ts'],
 })
 
 const app = express()
@@ -21,8 +28,8 @@ app.use(helmet())
 app.use(cors())
 app.use(logger('dev'))
 app.use(express.json())
-
-app.use('/', swaggerUi.serve, swaggerUi.setup(specs))
+app.use('/', (req, res) => res.send('Welcome to Iris API! Please go to /docs for the documentation'))
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(specs))
 app.use('/api/v1/iris', irisRouter)
 
 app.use((req, res) => res.status(404).send('Not found'))
